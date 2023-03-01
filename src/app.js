@@ -1,17 +1,14 @@
-import "express-async-errors";
-import express from "express";
-import { Request, Response } from "express";
-import rateLimit from "express-rate-limit";
-// import routes from "./src/shared/routes";
-import cors from "cors";
+const express = require("express");
+require("express-async-errors");
+const rateLimit = require("express-rate-limit");
+const cors = require("cors");
 
 const app = express();
 
 const limiter = rateLimit({
   windowMs: 1000, // 1 seconds
   max: 2, // Limit each IP to 2 requests per `window` (here, per 15 seconds)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  headers: true, // Return rate limit info in the `RateLimit-*` headers
 });
 
 // Apply the rate limiting middleware to all requests
@@ -28,6 +25,6 @@ app.get("/", async (request, response) => {
 });
 
 // API routes
-// app.use("/api/v1", routes);
+// app.use("/api/v1", require("./src/shared/routes"));
 
-export default async () => app;
+module.exports = async () => app;

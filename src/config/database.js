@@ -1,6 +1,6 @@
 // require dependencies
-import mongoose from "mongoose";
-import environment from "../environment";
+const mongoose =  require ("mongoose");
+const environment = require ("./environment");
 
 const connectDB = async () => {
   try {
@@ -11,4 +11,4 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+module.exports = connectDB

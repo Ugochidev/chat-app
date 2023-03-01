@@ -1,6 +1,6 @@
-import app from "./app";
-import connectDB from "../config/databases/mongodb";
-import environment from "../config/environment";
+const app = require("./app");
+const connectDB = require("./config/database");
+const environment = require("./config/environment");
 
 app().then(async () => {
   await connectDB();
